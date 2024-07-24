@@ -1,0 +1,36 @@
+name: Commit
+
+on:
+  push:
+
+jobs:
+  semantic_library_workflow:
+    name: push
+    uses: krogertechnology/kap-np-android-workflows/.github/workflows/semantic_library_workflow.yml@main
+    with:
+      ktlint_version: '0.46.1'
+      java_version: '17'
+      test_command: 'test'
+    secrets:
+      ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+      ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+      KT_JFROG_USERID: ${{ secrets.KT_JFROG_USERID }}
+      KT_JFROG_TOKEN: ${{ secrets.KT_JFROG_TOKEN }}
+      REPO_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# OSS config:
+#name: Commit
+#
+#on: [ push, workflow_dispatch ]
+#
+#jobs:
+#  semantic_library_workflow:
+#    name: push
+#    uses: krogerco/Shared-CI-Workflow-Android/.github/workflows/semantic_library_workflow.yml@v1.5.0
+#    secrets:
+#      ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_mavenCentralUsername }}
+#      ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_mavenCentralPassword }}
+#      ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKey }}
+#      ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKeyId }}
+#      ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKeyPassword }}
+#      REPO_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
