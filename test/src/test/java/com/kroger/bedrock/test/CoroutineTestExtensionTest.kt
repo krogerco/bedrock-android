@@ -23,24 +23,32 @@
  */
 package com.kroger.bedrock.test
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 import kotlinx.coroutines.withContext
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
 internal class CoroutineTestExtensionTest {
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @BeforeEach
+    fun setup() {
+        Dispatchers.setMain(Dispatchers.Unconfined)
+    }
+
     @Test
     @OptIn(ExperimentalCoroutinesApi::class)
     @ExtendWith(CoroutineTestExtension::class)
@@ -55,30 +63,27 @@ internal class CoroutineTestExtensionTest {
             assertEquals(true, fakeRepo.fakeUpdateCalled)
         }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `Given a viewmodel calling a dependency to launch a coroutine scope, When scope is launched without the Test Extension, Then an exception is thrown`() =
-        runTest {
-            val fakeRepo = FakeRepo()
-            val testViewModel = TestViewModel(fakeRepo)
+    fun `Given a viewmodel calling a dependency to launch a coroutine scope, When scope is launched without the Test Extension, Then the expected result of true will actually return false`() = runTest {
+        val fakeRepo = FakeRepo()
+        val testViewModel = TestViewModel(fakeRepo)
 
-            val exception = Assertions.assertThrows(IllegalStateException::class.java) {
-                testViewModel.viewModelScopeTest()
-            }
-
-            assertEquals(
-                "Module with the Main dispatcher had failed to initialize. For tests Dispatchers.setMain from kotlinx-coroutines-test module can be used",
-                exception.message,
-            )
-        }
+        assertEquals(false, fakeRepo.fakeUpdateCalled)
+        testViewModel.viewModelScopeTest()
+        advanceUntilIdle()
+        assertEquals(false, fakeRepo.fakeUpdateCalled)
+    }
 }
 
-internal class TestViewModel(private val fakeRepo: FakeRepo) : ViewModel() {
+internal class TestViewModel(private val fakeRepo: FakeRepo) {
+    private val testScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, exception ->
         // do nothing
     }
 
-    fun viewModelScopeTest() = viewModelScope.launch(coroutineExceptionHandler) {
+    fun viewModelScopeTest() = testScope.launch(coroutineExceptionHandler) {
         fakeRepo.fakeUpdate()
     }
 }

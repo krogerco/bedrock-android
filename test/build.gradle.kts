@@ -22,11 +22,7 @@
  * SOFTWARE.
  */
 plugins {
-    alias(libs.plugins.conventions.publishedAndroidLibrary)
-}
-
-android {
-    namespace = "com.kroger.bedrock.test"
+    alias(libs.plugins.conventions.publishedKotlinLibrary)
 }
 
 dependencies {
@@ -35,6 +31,5 @@ dependencies {
     api(libs.jupiter.api)
     implementation(libs.mockk)
 
-    testImplementation(libs.androidx.lifecycle.viewmodel)
     testRuntimeOnly(libs.jupiter.engine)
 }

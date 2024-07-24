@@ -95,6 +95,7 @@ public open class CoroutineTestExtension(
  * val coroutinesTestExtension = StandardCoroutineTestExtension()
  * ```
  */
+@OptIn(ExperimentalCoroutinesApi::class)
 public open class StandardCoroutineTestExtension : CoroutineTestExtension(StandardTestDispatcher())
 
 /**
