@@ -1,5 +1,5 @@
 # Bedrock
-Reusable Components for Ground Kontrol Libraries
+Reusable Components for Android Libraries and Applications
 
 Components
 - [Test](#test)
@@ -10,7 +10,7 @@ Components
 [Common test utilities](/test/README.md)
 
 ## UI
-[Reusable Compose views and theme for use in Ground Kontrol Sample Apps and Developer UIs](/ui/README.md)
+[Reusable Compose views and theme](/ui/README.md)
 
 ## Util
 [Coroutine Utilities](/util/README.md)
