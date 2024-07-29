@@ -44,9 +44,4 @@ dependencies {
     implementation(libs.hilt.android)
 
     implementation(project(":ui"))
-
-    testImplementation(libs.jupiter.api)
-    testRuntimeOnly(libs.jupiter.engine)
-    androidTestImplementation(libs.androidx.test.ext)
-    androidTestImplementation(libs.androidx.test.espresso.core)
 }

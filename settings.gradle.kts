@@ -25,7 +25,6 @@ rootProject.name = "bedrock"
 
 include(":test")
 include(":ui")
-include(":util")
 include(":sample_app")
 
 pluginManagement {

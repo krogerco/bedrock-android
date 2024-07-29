@@ -81,6 +81,7 @@ public fun BedrockIconToggle(
                 imageVector = toggleIcon,
                 contentDescription = contentDescription,
                 modifier = Modifier.padding(BedrockTheme.dimensions.paddingSmall),
+                tint = BedrockTheme.colors.primary,
             )
         }
     }

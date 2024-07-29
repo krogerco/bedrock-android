@@ -1,3 +1,5 @@
+import com.kroger.gradle.config.junit5
+
 /**
  * MIT License
  *
@@ -31,5 +33,5 @@ dependencies {
     api(libs.jupiter.api)
     implementation(libs.mockk)
 
-    testRuntimeOnly(libs.jupiter.engine)
+    junit5()
 }
