@@ -39,6 +39,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kroger.bedrock.ui.BedrockTheme
 
+/**
+ * [BedrockSwitch] is an instance of [Switch] that uses the Bedrock theme colors.
+ */
 @Composable
 @SuppressLint("ModifierParameter")
 public fun BedrockSwitch(

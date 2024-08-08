@@ -44,6 +44,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.kroger.bedrock.ui.BedrockTheme
 import com.kroger.bedrock.ui.R
 
+/**
+ * [SearchBar] is a [TextField] with a search icon, intended to be used for search use cases.
+ */
 @ExperimentalComposeUiApi
 @Composable
 public fun SearchBar(

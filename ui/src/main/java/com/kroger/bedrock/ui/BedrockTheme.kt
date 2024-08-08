@@ -39,6 +39,9 @@ import com.kroger.bedrock.ui.theme.largeDimensions
 import com.kroger.bedrock.ui.theme.lightColors
 import com.kroger.bedrock.ui.theme.smallDimensions
 
+/**
+ * The Composable Bedrock Theme wrapper
+ */
 @Composable
 public fun BedrockTheme(
     content: @Composable () -> Unit,
@@ -52,6 +55,9 @@ public fun BedrockTheme(
     }
 }
 
+/**
+ * Provides access to the current [Colors] and [Typography] for the Bedrock theme.
+ */
 public object BedrockTheme {
     /**
      * Retrieves the current [Colors] at the call site's position in the hierarchy.

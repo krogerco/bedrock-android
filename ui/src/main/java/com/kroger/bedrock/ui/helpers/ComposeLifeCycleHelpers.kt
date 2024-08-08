@@ -31,6 +31,11 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 
+/**
+ * Observe the lifecycle of a [Lifecycle] and emit the current [Lifecycle.Event] as a [State].
+ *
+ * @param lifeCycleEvent The [Lifecycle.Event] to observe. Defaults to [Lifecycle.Event.ON_ANY].
+ */
 @Composable
 public fun Lifecycle.observeAsState(lifeCycleEvent: Lifecycle.Event = Lifecycle.Event.ON_ANY): State<Lifecycle.Event> {
     val state = remember { mutableStateOf(lifeCycleEvent) }

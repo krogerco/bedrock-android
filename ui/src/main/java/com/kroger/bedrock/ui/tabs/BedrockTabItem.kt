@@ -25,6 +25,9 @@ package com.kroger.bedrock.ui.tabs
 
 import androidx.compose.runtime.Composable
 
+/**
+ * [BedrockTabItem] is the data class that represents a tab item in a [BedrockTabs].
+ */
 public data class BedrockTabItem(
     public val title: @Composable () -> Unit,
     public val content: @Composable () -> Unit,

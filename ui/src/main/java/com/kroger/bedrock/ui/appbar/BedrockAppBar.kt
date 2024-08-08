@@ -45,6 +45,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.kroger.bedrock.ui.BedrockTheme
 import com.kroger.bedrock.ui.R
 
+/**
+ * [BedrockAppBar] is a [TopAppBar] with a title, navigation icon, and actions.
+ */
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 public fun BedrockAppBar(
@@ -67,6 +70,9 @@ public fun BedrockAppBar(
     }
 }
 
+/**
+ * [UpButton] is intended to be used as the navigation icon in a [BedrockAppBar], but other icons should be used as needed.
+ */
 @Composable
 public fun UpButton(onUpButtonPressed: () -> Unit) {
     IconButton(

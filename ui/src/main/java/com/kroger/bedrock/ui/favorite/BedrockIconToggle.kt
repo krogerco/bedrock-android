@@ -42,6 +42,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import com.kroger.bedrock.ui.BedrockTheme
 
+/**
+ * [BedrockIconToggle] is a toggleable icon button that displays a checked or unchecked icon.
+ */
 @Composable
 public fun BedrockIconToggle(
     modifier: Modifier = Modifier,

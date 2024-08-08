@@ -39,6 +39,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.kroger.bedrock.ui.BedrockTheme
 
+/**
+ * [BedrockTabs] wraps [TabRow] and [Tab] to provide a tabbed layout with the Bedrock theme.
+ */
 @Composable
 public fun BedrockTabs(
     modifier: Modifier = Modifier,

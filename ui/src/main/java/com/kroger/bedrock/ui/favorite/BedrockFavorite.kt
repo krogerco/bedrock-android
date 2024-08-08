@@ -32,6 +32,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kroger.bedrock.ui.BedrockTheme
 
+/**
+ * [BedrockFavorite] is a special instance of [BedrockIconToggle] that displays a filled or outlined heart icon.
+ */
 @Composable
 public fun BedrockFavorite(
     modifier: Modifier = Modifier,
