@@ -37,10 +37,12 @@ public data class BedrockDimensions(
     val elevation: Dp = 8.dp,
 )
 
-public val smallDimensions: BedrockDimensions = BedrockDimensions(
-    buttonHeight = 48.dp,
-)
+public val smallDimensions: BedrockDimensions =
+    BedrockDimensions(
+        buttonHeight = 48.dp,
+    )
 
-public val largeDimensions: BedrockDimensions = BedrockDimensions(
-    buttonHeight = 128.dp,
-)
+public val largeDimensions: BedrockDimensions =
+    BedrockDimensions(
+        buttonHeight = 128.dp,
+    )

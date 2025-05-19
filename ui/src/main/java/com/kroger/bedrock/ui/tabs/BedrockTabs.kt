@@ -73,10 +73,11 @@ public fun BedrockTabs(
 private fun BedrockTabsPreview() {
     BedrockTheme {
         BedrockTabs(
-            tabItems = listOf(
-                BedrockTabItem({ Text("Hello") }, { Text(text = "Hello") }),
-                BedrockTabItem({ Text("World") }, { Text(text = "World") }),
-            ),
+            tabItems =
+                listOf(
+                    BedrockTabItem({ Text("Hello") }, { Text(text = "Hello") }),
+                    BedrockTabItem({ Text("World") }, { Text(text = "World") }),
+                ),
         )
     }
 }

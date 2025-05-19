@@ -64,7 +64,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
@@ -85,26 +84,27 @@ private fun MainContent() {
             BedrockAppBar(title = { Text(text = "Bedrock") }, appBarActions = { AndroidMenuButton {} }) {
                 BedrockTabs(
                     modifier = Modifier.fillMaxSize(),
-                    tabItems = listOf(
-                        BedrockTabItem({ Text("Home") }, { DemoAppScreen() }),
-                        BedrockTabItem(
-                            { Text("Icon Toggles & Switch") },
-                            {
-                                FavoritesTabContent(
-                                    isFavorited,
-                                    isFlagChecked,
-                                    {
-                                        isFavorited = it
-                                        toast(context, "Favorite Pressed! Selected: $it")
-                                    },
-                                    {
-                                        isFlagChecked = it
-                                        toast(context, "Star Pressed! Selected: $it")
-                                    },
-                                )
-                            },
+                    tabItems =
+                        listOf(
+                            BedrockTabItem({ Text("Home") }, { DemoAppScreen() }),
+                            BedrockTabItem(
+                                { Text("Icon Toggles & Switch") },
+                                {
+                                    FavoritesTabContent(
+                                        isFavorited,
+                                        isFlagChecked,
+                                        {
+                                            isFavorited = it
+                                            toast(context, "Favorite Pressed! Selected: $it")
+                                        },
+                                        {
+                                            isFlagChecked = it
+                                            toast(context, "Star Pressed! Selected: $it")
+                                        },
+                                    )
+                                },
+                            ),
                         ),
-                    ),
                 )
             }
         }
@@ -120,9 +120,10 @@ private fun FavoritesTabContent(
 ) {
     var isSwitchChecked: Boolean by remember { mutableStateOf(false) }
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(BedrockTheme.dimensions.gutter),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(BedrockTheme.dimensions.gutter),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
@@ -159,7 +160,10 @@ private fun AndroidMenuButton(onAndroidMenuButtonPressed: () -> Unit) {
     )
 }
 
-private fun toast(context: Context, message: String) {
+private fun toast(
+    context: Context,
+    message: String,
+) {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
 

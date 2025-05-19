@@ -42,7 +42,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
 internal class CoroutineTestExtensionTest {
-
     @OptIn(ExperimentalCoroutinesApi::class)
     @BeforeEach
     fun setup() {
@@ -65,34 +64,43 @@ internal class CoroutineTestExtensionTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `Given a viewmodel calling a dependency to launch a coroutine scope, When scope is launched without the Test Extension, Then the expected result of true will actually return false`() = runTest {
-        val fakeRepo = FakeRepo()
-        val testViewModel = TestViewModel(fakeRepo)
+    fun `Given a viewmodel calling a dependency to launch a coroutine scope, When scope is launched without the Test Extension, Then the expected result of true will actually return false`() =
+        runTest {
+            val fakeRepo = FakeRepo()
+            val testViewModel = TestViewModel(fakeRepo)
 
-        assertEquals(false, fakeRepo.fakeUpdateCalled)
-        testViewModel.viewModelScopeTest()
-        advanceUntilIdle()
-        assertEquals(false, fakeRepo.fakeUpdateCalled)
-    }
+            assertEquals(false, fakeRepo.fakeUpdateCalled)
+            testViewModel.viewModelScopeTest()
+            advanceUntilIdle()
+            assertEquals(false, fakeRepo.fakeUpdateCalled)
+        }
 }
 
-internal class TestViewModel(private val fakeRepo: FakeRepo) {
+internal class TestViewModel(
+    private val fakeRepo: FakeRepo,
+) {
     private val testScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, exception ->
-        // do nothing
-    }
+    private val coroutineExceptionHandler =
+        CoroutineExceptionHandler { coroutineContext, exception ->
+            // do nothing
+        }
 
-    fun viewModelScopeTest() = testScope.launch(coroutineExceptionHandler) {
-        fakeRepo.fakeUpdate()
-    }
+    fun viewModelScopeTest() =
+        testScope.launch(coroutineExceptionHandler) {
+            fakeRepo.fakeUpdate()
+        }
 }
 
-internal class FakeRepo(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+internal class FakeRepo(
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
+) {
     var fakeUpdateCalled = false
-    suspend fun fakeUpdate() = withContext(dispatcher) {
-        // delay to simulate a repo update taking time
-        delay(500)
-        fakeUpdateCalled = true
-    }
+
+    suspend fun fakeUpdate() =
+        withContext(dispatcher) {
+            // delay to simulate a repo update taking time
+            delay(500)
+            fakeUpdateCalled = true
+        }
 }

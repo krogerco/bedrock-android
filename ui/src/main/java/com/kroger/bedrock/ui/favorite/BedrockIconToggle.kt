@@ -55,11 +55,12 @@ public fun BedrockIconToggle(
     contentDescription: String,
     onPressed: (isChecked: Boolean) -> Unit,
 ) {
-    val toggleIcon = if (isChecked) {
-        checkedIcon
-    } else {
-        uncheckedIcon
-    }
+    val toggleIcon =
+        if (isChecked) {
+            checkedIcon
+        } else {
+            uncheckedIcon
+        }
 
     IconToggleButton(
         checked = isChecked,
@@ -70,15 +71,17 @@ public fun BedrockIconToggle(
         enabled = enabled,
     ) {
         Surface(
-            modifier = Modifier
-                .size(BedrockTheme.dimensions.buttonHeight)
-                .alpha(LocalContentAlpha.current),
+            modifier =
+                Modifier
+                    .size(BedrockTheme.dimensions.buttonHeight)
+                    .alpha(LocalContentAlpha.current),
             color = BedrockTheme.colors.surface,
             shape = CircleShape,
-            border = BorderStroke(
-                width = BedrockTheme.dimensions.stroke,
-                color = BedrockTheme.colors.primary,
-            ),
+            border =
+                BorderStroke(
+                    width = BedrockTheme.dimensions.stroke,
+                    color = BedrockTheme.colors.primary,
+                ),
         ) {
             Icon(
                 imageVector = toggleIcon,

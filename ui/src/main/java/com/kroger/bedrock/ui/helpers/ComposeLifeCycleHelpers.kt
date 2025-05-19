@@ -40,9 +40,10 @@ import androidx.lifecycle.LifecycleEventObserver
 public fun Lifecycle.observeAsState(lifeCycleEvent: Lifecycle.Event = Lifecycle.Event.ON_ANY): State<Lifecycle.Event> {
     val state = remember { mutableStateOf(lifeCycleEvent) }
     DisposableEffect(this) {
-        val observer = LifecycleEventObserver { _, event ->
-            state.value = event
-        }
+        val observer =
+            LifecycleEventObserver { _, event ->
+                state.value = event
+            }
         this@observeAsState.addObserver(observer)
         onDispose {
             this@observeAsState.removeObserver(observer)

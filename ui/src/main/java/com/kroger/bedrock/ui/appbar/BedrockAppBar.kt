@@ -103,7 +103,10 @@ private fun BedrockAppBarPreview() {
 }
 
 @Composable
-internal fun PreviewAppBarIcon(imageVector: ImageVector, contentDescription: String = "") {
+internal fun PreviewAppBarIcon(
+    imageVector: ImageVector,
+    contentDescription: String = "",
+) {
     Row {
         IconButton(
             onClick = { },

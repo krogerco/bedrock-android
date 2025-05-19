@@ -57,10 +57,11 @@ public fun BedrockSwitch(
         modifier = modifier.testTag(SWITCH_TEST_TAG),
         enabled = enabled,
         interactionSource = interactionSource,
-        colors = SwitchDefaults.colors(
-            checkedThumbColor = BedrockTheme.colors.primary,
-            uncheckedThumbColor = BedrockTheme.colors.primaryVariant,
-        ),
+        colors =
+            SwitchDefaults.colors(
+                checkedThumbColor = BedrockTheme.colors.primary,
+                uncheckedThumbColor = BedrockTheme.colors.primaryVariant,
+            ),
     )
 }
 

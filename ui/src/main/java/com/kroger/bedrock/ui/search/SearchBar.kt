@@ -76,9 +76,10 @@ public fun SearchBar(
             }
         },
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-        keyboardActions = KeyboardActions(
-            onDone = { keyboardController?.hide() },
-        ),
+        keyboardActions =
+            KeyboardActions(
+                onDone = { keyboardController?.hide() },
+            ),
     )
 }
 

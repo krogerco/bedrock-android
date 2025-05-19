@@ -43,9 +43,7 @@ import com.kroger.bedrock.ui.theme.smallDimensions
  * The Composable Bedrock Theme wrapper
  */
 @Composable
-public fun BedrockTheme(
-    content: @Composable () -> Unit,
-) {
+public fun BedrockTheme(content: @Composable () -> Unit) {
     ProvideAppDimens(dimensions = BedrockTheme.dimensions) {
         MaterialTheme(
             colors = BedrockTheme.colors,
@@ -67,20 +65,22 @@ public object BedrockTheme {
     public val colors: Colors
         @Composable
         @ReadOnlyComposable
-        get() = if (isSystemInDarkTheme()) {
-            darkColors
-        } else {
-            lightColors
-        }
+        get() =
+            if (isSystemInDarkTheme()) {
+                darkColors
+            } else {
+                lightColors
+            }
 
     public val dimensions: BedrockDimensions
         @Composable
         @ReadOnlyComposable
-        get() = if (LocalConfiguration.current.screenWidthDp <= 600) {
-            smallDimensions
-        } else {
-            largeDimensions
-        }
+        get() =
+            if (LocalConfiguration.current.screenWidthDp <= 600) {
+                smallDimensions
+            } else {
+                largeDimensions
+            }
 
     public val typography: Typography
         @Composable
@@ -97,8 +97,9 @@ public fun ProvideAppDimens(
     CompositionLocalProvider(LocalAppDimens provides dimensionSet, content = content)
 }
 
-private val LocalAppDimens = staticCompositionLocalOf {
-    smallDimensions
-}
+private val LocalAppDimens =
+    staticCompositionLocalOf {
+        smallDimensions
+    }
 
 private val LocalTypography = staticCompositionLocalOf { Typography() }

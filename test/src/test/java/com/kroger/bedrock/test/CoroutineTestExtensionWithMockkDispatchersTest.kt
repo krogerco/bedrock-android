@@ -65,7 +65,8 @@ internal class CoroutineTestExtensionWithMockkDispatchersTest {
         }
 }
 
-private suspend fun fetchData(duration: Long): String = withContext(Dispatchers.IO) {
-    delay(duration)
-    "Hello world"
-}
+private suspend fun fetchData(duration: Long): String =
+    withContext(Dispatchers.IO) {
+        delay(duration)
+        "Hello world"
+    }
