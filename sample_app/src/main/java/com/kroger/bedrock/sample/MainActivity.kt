@@ -29,10 +29,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -63,6 +66,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent {
             MainContent()
@@ -77,30 +81,32 @@ private fun MainContent() {
     var isFlagChecked: Boolean by rememberSaveable { mutableStateOf(false) }
 
     BedrockTheme {
-        BedrockAppBar(title = { Text(text = "Bedrock") }, appBarActions = { AndroidMenuButton {} }) {
-            BedrockTabs(
-                modifier = Modifier.fillMaxSize(),
-                tabItems = listOf(
-                    BedrockTabItem({ Text("Home") }, { DemoAppScreen() }),
-                    BedrockTabItem(
-                        { Text("Icon Toggles & Switch") },
-                        {
-                            FavoritesTabContent(
-                                isFavorited,
-                                isFlagChecked,
-                                {
-                                    isFavorited = it
-                                    toast(context, "Favorite Pressed! Selected: $it")
-                                },
-                                {
-                                    isFlagChecked = it
-                                    toast(context, "Star Pressed! Selected: $it")
-                                },
-                            )
-                        },
+        Box(Modifier.safeDrawingPadding()) {
+            BedrockAppBar(title = { Text(text = "Bedrock") }, appBarActions = { AndroidMenuButton {} }) {
+                BedrockTabs(
+                    modifier = Modifier.fillMaxSize(),
+                    tabItems = listOf(
+                        BedrockTabItem({ Text("Home") }, { DemoAppScreen() }),
+                        BedrockTabItem(
+                            { Text("Icon Toggles & Switch") },
+                            {
+                                FavoritesTabContent(
+                                    isFavorited,
+                                    isFlagChecked,
+                                    {
+                                        isFavorited = it
+                                        toast(context, "Favorite Pressed! Selected: $it")
+                                    },
+                                    {
+                                        isFlagChecked = it
+                                        toast(context, "Star Pressed! Selected: $it")
+                                    },
+                                )
+                            },
+                        ),
                     ),
-                ),
-            )
+                )
+            }
         }
     }
 }

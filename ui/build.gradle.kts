@@ -29,6 +29,14 @@ android {
     namespace = "com.kroger.bedrock.ui"
 }
 
+kover {
+    currentProject {
+        createVariant("default") {
+            add("debug")
+        }
+    }
+}
+
 dependencies {
     implementation(libs.kotlinx.coroutines)
 

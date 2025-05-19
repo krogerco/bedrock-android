@@ -22,6 +22,7 @@
  * SOFTWARE.
  */
 plugins {
+    alias(libs.plugins.compose) apply false
     alias(libs.plugins.conventions.root)
     alias(libs.plugins.conventions.androidApplication) apply false
     alias(libs.plugins.conventions.publishedAndroidLibrary) apply false
@@ -34,8 +35,21 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlinter) apply false
-    alias(libs.plugins.kotlinx.kover) apply false
+    alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.android.test) apply false
     alias(libs.plugins.maven.publish) apply false
+}
+
+kover {
+    currentProject {
+        createVariant("default") {
+            // no sources and tests in root module
+        }
+    }
+}
+
+dependencies {
+    kover(project(":test"))
+    kover(project(":ui"))
 }

@@ -27,10 +27,19 @@ plugins {
     alias(libs.plugins.conventions.publishedKotlinLibrary)
 }
 
+kover {
+    currentProject {
+        createVariant("default") {
+            add("jvm")
+        }
+    }
+}
+
 dependencies {
     api(libs.kotlinx.coroutines)
     api(libs.kotlinx.coroutines.test)
     api(libs.jupiter.api)
+    implementation(platform(libs.junit5.bom))
     implementation(libs.mockk)
 
     junit5()
