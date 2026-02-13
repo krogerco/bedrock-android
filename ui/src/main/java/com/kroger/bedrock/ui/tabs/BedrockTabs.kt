@@ -25,10 +25,10 @@ package com.kroger.bedrock.ui.tabs
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Surface
-import androidx.compose.material.Tab
-import androidx.compose.material.TabRow
-import androidx.compose.material.Text
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,7 +45,7 @@ import com.kroger.bedrock.ui.BedrockTheme
 @Composable
 public fun BedrockTabs(
     modifier: Modifier = Modifier,
-    surfaceColor: Color = BedrockTheme.colors.background,
+    surfaceColor: Color = BedrockTheme.colorScheme.background,
     tabItems: List<BedrockTabItem>,
 ) {
     var tabIndex: Int by rememberSaveable { mutableStateOf(0) }

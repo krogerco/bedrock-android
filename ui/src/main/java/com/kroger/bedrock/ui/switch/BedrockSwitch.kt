@@ -29,8 +29,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Switch
-import androidx.compose.material.SwitchDefaults
+import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -57,15 +56,11 @@ public fun BedrockSwitch(
         modifier = modifier.testTag(SWITCH_TEST_TAG),
         enabled = enabled,
         interactionSource = interactionSource,
-        colors = SwitchDefaults.colors(
-            checkedThumbColor = BedrockTheme.colors.primary,
-            uncheckedThumbColor = BedrockTheme.colors.primaryVariant,
-        ),
     )
 }
 
-@Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 private fun BedrockSwitchPreview() {
     BedrockTheme {

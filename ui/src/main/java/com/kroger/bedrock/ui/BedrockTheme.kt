@@ -24,9 +24,9 @@
 package com.kroger.bedrock.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.Colors
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Typography
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -34,9 +34,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalConfiguration
 import com.kroger.bedrock.ui.theme.BedrockDimensions
-import com.kroger.bedrock.ui.theme.darkColors
+import com.kroger.bedrock.ui.theme.darkColorScheme
 import com.kroger.bedrock.ui.theme.largeDimensions
-import com.kroger.bedrock.ui.theme.lightColors
+import com.kroger.bedrock.ui.theme.lightColorScheme
 import com.kroger.bedrock.ui.theme.smallDimensions
 
 /**
@@ -48,7 +48,7 @@ public fun BedrockTheme(
 ) {
     ProvideAppDimens(dimensions = BedrockTheme.dimensions) {
         MaterialTheme(
-            colors = BedrockTheme.colors,
+            colorScheme = BedrockTheme.colorScheme,
             content = content,
             typography = BedrockTheme.typography,
         )
@@ -56,21 +56,19 @@ public fun BedrockTheme(
 }
 
 /**
- * Provides access to the current [Colors] and [Typography] for the Bedrock theme.
+ * Provides access to the current [ColorScheme] and [Typography] for the Bedrock theme.
  */
 public object BedrockTheme {
     /**
-     * Retrieves the current [Colors] at the call site's position in the hierarchy.
-     *
-     * @sample androidx.compose.material.samples.ThemeColorSample
+     * Retrieves the current [ColorScheme] at the call site's position in the hierarchy.
      */
-    public val colors: Colors
+    public val colorScheme: ColorScheme
         @Composable
         @ReadOnlyComposable
         get() = if (isSystemInDarkTheme()) {
-            darkColors
+            darkColorScheme
         } else {
-            lightColors
+            lightColorScheme
         }
 
     public val dimensions: BedrockDimensions

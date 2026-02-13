@@ -36,7 +36,7 @@ truth = "1.1.3"
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
 androidx-arch-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "androidxCoreTesting" }
-androidx-compose-material = { module = "androidx.compose.material:material" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-material-iconsExtended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui" }
@@ -50,8 +50,8 @@ androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmode
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxTestEspresso" }
 androidx-test-ext = { module = "androidx.test.ext:junit-ktx", version.ref = "androidxTestExt" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTest" }
-gradlePlugins-kotlinter = { module = "org.jmailen.gradle:kotlinter-gradle", version.ref = "kotlinter" }
 googleMaterial = { module = "com.google.android.material:material", version.ref = "googleMaterial" }
+gradlePlugins-kotlinter = { module = "org.jmailen.gradle:kotlinter-gradle", version.ref = "kotlinter" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "kgpDagger" }
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "kgpJunit5" }
 jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "kgpJunit5" }
