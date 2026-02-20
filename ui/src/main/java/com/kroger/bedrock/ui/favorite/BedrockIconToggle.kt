@@ -28,13 +28,13 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconToggleButton
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconToggleButton
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -72,19 +72,19 @@ public fun BedrockIconToggle(
         Surface(
             modifier = Modifier
                 .size(BedrockTheme.dimensions.buttonHeight)
-                .alpha(LocalContentAlpha.current),
-            color = BedrockTheme.colors.surface,
+                .alpha(LocalContentColor.current.alpha),
+            color = BedrockTheme.colorScheme.surface,
             shape = CircleShape,
             border = BorderStroke(
                 width = BedrockTheme.dimensions.stroke,
-                color = BedrockTheme.colors.primary,
+                color = BedrockTheme.colorScheme.primary,
             ),
         ) {
             Icon(
                 imageVector = toggleIcon,
                 contentDescription = contentDescription,
                 modifier = Modifier.padding(BedrockTheme.dimensions.paddingSmall),
-                tint = BedrockTheme.colors.primary,
+                tint = BedrockTheme.colorScheme.primary,
             )
         }
     }
