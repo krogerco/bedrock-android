@@ -28,14 +28,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
@@ -47,7 +46,6 @@ import com.kroger.bedrock.ui.R
 /**
  * [SearchBar] is a [TextField] with a search icon, intended to be used for search use cases.
  */
-@ExperimentalComposeUiApi
 @Composable
 public fun SearchBar(
     onQueryChange: (String) -> Unit,
@@ -85,7 +83,6 @@ public fun SearchBar(
 @Preview
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-@OptIn(ExperimentalComposeUiApi::class)
 private fun SearchBarPreview() {
     BedrockTheme {
         SearchBar(onQueryChange = {}, query = "")
