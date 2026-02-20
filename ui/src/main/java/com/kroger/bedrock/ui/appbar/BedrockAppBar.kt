@@ -24,9 +24,9 @@
 package com.kroger.bedrock.ui.appbar
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -36,7 +36,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -56,7 +55,7 @@ public fun BedrockAppBar(
     title: @Composable () -> Unit,
     navigationIcon: @Composable (() -> Unit)? = null,
     appBarActions: @Composable RowScope.() -> Unit = {},
-    content: @Composable () -> Unit,
+    content: @Composable (PaddingValues) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -67,9 +66,7 @@ public fun BedrockAppBar(
             )
         },
     ) { paddingValues ->
-        Surface(modifier = Modifier.padding(paddingValues)) {
-            content()
-        }
+        content(paddingValues)
     }
 }
 
